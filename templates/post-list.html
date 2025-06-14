@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+
+{% block content %}
+    <h2>Blog Posts</h2>
+    <ul>
+        {% for post in post_list %}
+            <li>{{ post.title }} por
+                {{ post.author }} -
+                {{ post.created_at }}
+            </li>
+        {% endfor %} 
+    </ul>
+    <!--que muestre cuantos post hay-->
+    
+    <p>total posts: {{ post_count }}</p>
+    
+{% endblock content %}
+
