@@ -7,11 +7,13 @@
 </head>
 <body>
     <header>
-        <h1>Blog de Miguel</h1>
+        <a href="{% url 'post-list' %}"><h1>Blog de Miguel</h1></a>
     </header>      
+
     {% block content %}
 
     {% endblock %}
+
     <footer>
         <p>&copy; 2025 - Blog de Miguel</p>
     </footer>
