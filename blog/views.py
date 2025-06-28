@@ -4,7 +4,9 @@ from django.views.generic import ListView, DetailView
 from django.views.generic.edit import (
                                         CreateView, 
                                         UpdateView,
+                                        DeleteView
                                         )
+from django.urls import reverse_lazy
 
 # Create your views here.
 class PostListView(ListView):
@@ -28,4 +30,8 @@ class PostUpdateView(UpdateView):
     template_name = 'post-update.html'
     fields = ['title', 'content',]
 
-
+# delete view
+class PostDeleteView(DeleteView):
+    model = Post
+    template_name = 'post-delete.html'
+    success_url = reverse_lazy('post-list')  # Redirige a la lista de posts después de eliminar uno
