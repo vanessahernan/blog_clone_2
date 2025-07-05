@@ -12,13 +12,26 @@
 <body>
     <header>
         <a href="{% url 'post-list' %}"><h1>Blog de Miguel</h1></a>
-        <!-- enlace para crear nuevo post -->
+       
+        <!-- mostrar el nombre del usuario autenticado -->
+         {% if user.is_authenticated %}
+         <p>Bienvenido, {{ user.username }}!</p>
+         <!-- cierre de sesion -->
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesion</button>
+          </form>
+         {% else %}
+        <p>Bienvenido, visitante!</p>
+        <a href="{% url 'login' %}">Iniciar sesion</a> 
+        <a href="{% url 'signup' %}">Registrarse</a>
+        {% endif %} 
+        <!-- enlace para nuevo post -->
         <a href="{% url 'post-create' %}">Crear nuevo post</a>
-        
-
+      
     </header>      
-    
-
+    <!-- enlace para inicio de sesion -->
+        
 
     {% block content %}
 
@@ -30,4 +43,5 @@
 
 
 </body>
-</html>
+</html> 
+ 
